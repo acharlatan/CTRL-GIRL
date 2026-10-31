@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 
 export default defineConfig({
   root: 'pages',
-  base: '/CTRL-GIRL/',
+  base: './',
   publicDir: '../public',
   resolve: { alias: { '@': resolve(__dirname, '.') } },
   plugins: [react(), {
