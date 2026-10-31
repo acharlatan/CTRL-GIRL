@@ -39,6 +39,7 @@ export default function CampaignBuilder() {
     catch { setMessage('This browser could not save your work. Download a copy.'); }
   }, [context, outline, ready]);
   function makeOutline() {
+    if (outline.trim() && !window.confirm('Replace the current outline? Download or copy it first if you want to keep it.')) return;
     const v = (key: Key) => context[key].trim() || '[Add your thinking]';
     setOutline(`CAMPAIGN WORKING PLAN
 
@@ -76,18 +77,19 @@ ASSUMPTIONS AND OPEN QUESTIONS
     try { await navigator.clipboard.writeText(outline); setMessage('Campaign plan copied.'); }
     catch { setMessage('Copy is unavailable in this browser. Download your plan instead.'); }
   }
+  const filled = fields.filter(([key]) => context[key].trim()).length;
   return <section className="campaign-builder">
-    <header><span>✦ THE AI TOOLKIT / CAMPAIGN BUILDER</span><h1>Make a plan worth making.</h1>
-      <p>Turn your project context into an editable campaign outline. This guided template runs on your device and does not generate AI output.</p></header>
-    <div className="campaign-layout"><div><h2>01 / Set the scene</h2>
-      {fields.map(([key, label, placeholder]) => <label key={key}>{label}<input value={context[key]} maxLength={500} placeholder={placeholder} onChange={e => setContext({ ...context, [key]: e.target.value })} /></label>)}
-      <button onClick={makeOutline}>Create my outline</button>
-      <p>Creating a new outline replaces the current outline. Copy or download it first if you want to keep it.</p></div>
-      <div><h2>02 / Make it yours</h2>
-        <label htmlFor="campaign-outline">Your working plan</label>
-        <textarea id="campaign-outline" value={outline} onChange={e => setOutline(e.target.value)} placeholder="Your editable outline will appear here." rows={22} />
-        <button onClick={copy} disabled={!outline}>Copy plan</button><button onClick={download} disabled={!outline}>Download plan</button>
-        <p role="status">{message}</p><p>Saved on this device. Clearing browser data removes it. No results are inferred or invented.</p>
+    <header className="campaign-cover"><div className="campaign-cover-copy"><span>THE TOOLKIT / CREATIVE FILE 001</span><h1>GOOD IDEAS<br/><em>NEED A</em><br/>PLAN.</h1><p>A little structure for the big idea in your head. Make a working campaign plan, your way.</p><div className="campaign-cover-bottom">GUIDED TEMPLATE <b>✳</b> SAVED ON THIS DEVICE</div></div><div className="campaign-cover-art" aria-hidden="true"><div className="campaign-paper"><small>THE CAMPAIGN FILE / 001</small><strong>THE<br/><em>BIG</em><br/>IDEA.</strong><span>FROM THOUGHT TO THING ↗</span></div><span className="campaign-sticker">YOU'VE GOT<br/>THIS ♡</span></div></header>
+    <div className="campaign-guide"><span>YOUR CREATIVE WORKSPACE</span><p>Fill in what you know, create your outline, then shape it into something unmistakably yours.</p><b>01 / CONTEXT &nbsp; → &nbsp; 02 / YOUR PLAN</b></div>
+    <div className="campaign-layout"><div className="campaign-form"><div className="campaign-step"><span>01 / THE CONTEXT</span><b>{filled} / {fields.length} FILLED</b></div><h2>Set the scene<span>✳</span></h2><p>Start anywhere. Leave a blank if you're still working it out.</p>
+      {fields.map(([key, label, placeholder],i) => <label key={key}><span className="campaign-label-num">{String(i+1).padStart(2,'0')}</span><span>{label}</span><input value={context[key]} maxLength={500} placeholder={placeholder} onChange={e => setContext({ ...context, [key]: e.target.value })} /></label>)}
+      <button className="campaign-create" onClick={makeOutline}>CREATE MY OUTLINE <span>↗</span></button>
+      <p className="campaign-small">This is a guided template, not AI generation. Creating a new outline replaces the current one.</p></div>
+      <div className="campaign-result"><div className="campaign-step"><span>02 / THE FINISHED FILE</span><b>YOURS TO EDIT ✳</b></div><h2>Make it yours<span>↗</span></h2><p>This is your starting point. Edit, rearrange, and bring your own ideas.</p>
+        <label htmlFor="campaign-outline">YOUR CAMPAIGN WORKING PLAN</label>
+        <textarea id="campaign-outline" value={outline} onChange={e => setOutline(e.target.value)} placeholder="Your editable outline will appear here. No blank-page panic, promise." rows={22} />
+        <div className="campaign-actions"><button onClick={copy} disabled={!outline}>COPY PLAN ↗</button><button onClick={download} disabled={!outline}>DOWNLOAD ↓</button></div>
+        <p role="status">{message}</p><div className="campaign-privacy"><b>A LITTLE NOTE ♡</b><p>Saved on this device. Clearing browser data removes it, so download a copy when you're done.</p></div>
       </div></div>
   </section>;
 }
