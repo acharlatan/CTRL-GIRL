@@ -22,3 +22,31 @@ html{scroll-behavior:smooth}body{background:var(--paper);color:var(--ink);font-f
 
 /* Designed brief covers: each fictional brand becomes its own little issue. */
 .challenge-art{isolation:isolate;overflow:hidden}.challenge-art:before{content:'';position:absolute;inset:16% -8% 8% 28%;background:#fff7;transform:rotate(-12deg);border:1px solid currentColor;opacity:.55}.challenge-art:after{content:'';position:absolute;width:45%;height:55%;right:-10%;top:-15%;border:1px solid currentColor;transform:rotate(30deg);background:#fff3}.challenge-art .art-number{position:absolute;right:18px;top:14px;font:900 48px/.9 'Archivo Black',sans-serif;letter-spacing:-.09em;opacity:.35}.challenge-art .art-title{position:relative;z-index:2;max-width:75%;text-align:center;font:800 clamp(28px,3.1vw,52px)/.92 'Playfair Display',Georgia,serif;letter-spacing:-.06em;transform:rotate(-5deg);text-transform:uppercase}.challenge-art .art-sticker{position:absolute;z-index:3;right:15%;bottom:20%;font-size:38px;transform:rotate(15deg);filter:drop-shadow(2px 3px 0 #fff)}.challenge-art .art-brand,.challenge-art .art-index,.challenge-art .art-caption{z-index:4}.challenge-art .art-circle{z-index:1}.art-afterhours:before{transform:rotate(12deg);background:#fff9}.art-still:before{transform:rotate(-8deg);background:#fafff6aa}.art-click:before{transform:rotate(8deg)}.art-human:before{transform:rotate(-4deg)}.article-art-0{background-image:linear-gradient(#e82b7390,#e82b7350),url('../public/editorial-cover.webp');background-size:cover;background-position:left center;color:#fff}.article-art-1{background-image:linear-gradient(#bc9bdd80,#bc9bdd60),url('../public/editorial-cover.webp');background-size:cover;background-position:center;color:#4b1738}.article-art-2{background-image:linear-gradient(#f09bb180,#f09bb150),url('../public/editorial-cover.webp');background-size:cover;background-position:right;color:#5d1d3b}.article-art span{font-family:'Playfair Display',Georgia,serif;text-shadow:2px 2px #fff7}@media(max-width:760px){.challenge-art .art-title{font-size:39px}.challenge-art .art-number{font-size:42px}}
+/* Final layout refinements: distinct covers, varied editorial pacing. */
+.campaign-builder header.campaign-cover{padding:0;box-shadow:none}
+.playground-page .challenge-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.playground-page .challenge-card:first-child{grid-column:span 2;display:grid;grid-template-columns:1.08fr .92fr;align-items:stretch}
+.playground-page .challenge-card:first-child .challenge-cover{display:flex;flex-direction:column}
+.playground-page .challenge-card:first-child .challenge-art{flex:1;min-height:255px}
+.playground-page .challenge-card:first-child .card-content{display:flex;flex-direction:column;justify-content:center;padding:26px}
+.playground-page .challenge-card:first-child .card-content h3{font-size:clamp(28px,3vw,42px)}
+.playground-page .challenge-card:first-child .card-bottom{margin-top:26px}
+.edit-page .page-intro{background:transparent;border:0;border-top:1px solid #9f7488;border-bottom:1px solid #9f7488;padding:50px 0;margin-bottom:38px}
+.edit-page .page-intro:before{top:15px;right:0}
+.edit-cover{background:#ed235f;box-shadow:8px 10px 0 #f2b7cd}
+.article-art-1{background-color:#dfd1eb;background-image:linear-gradient(45deg,#c9b4de 25%,transparent 25%,transparent 75%,#c9b4de 75%),linear-gradient(45deg,#c9b4de 25%,transparent 25%,transparent 75%,#c9b4de 75%);background-position:0 0,18px 18px;background-size:36px 36px;color:#6b2d65}
+.article-art-2{background:#f1a2be;background-image:radial-gradient(#cf4b7c 1px,transparent 1px);background-size:13px 13px;color:#8e2353}
+.lab-top{background:#481b37;border-color:#481b37;color:#fff5f4}
+.lab-top h1{color:#fff8f4}.lab-top h1 em{color:#ff91bd}.lab-top p{color:#f6d6e1}.lab-top .lab-kicker,.lab-top .lab-note{color:#f8a7c6}
+.lab-art{background:#ee4385;color:#fff;box-shadow:0 0 0 14px #f7b3d0,0 0 0 15px #ffd9e8}
+.studio-intro{background:#f4c3d5;border:1px solid #d19eb3;position:relative;display:grid;grid-template-columns:1fr .7fr;gap:30px;padding:48px 5%;min-height:440px}
+.studio-intro h1{font:400 clamp(48px,5.8vw,88px)/.85 'Archivo Black',sans-serif;letter-spacing:-.075em;margin:32px 0 20px;color:#3b172d}
+.studio-intro h1 em{font:italic 700 1em 'Playfair Display',serif;color:#e9226b}
+.studio-intro p{font-size:16px;color:#68475a;max-width:440px}
+.studio-cover-caption{display:block;margin-top:28px;font:10px 'DM Mono',monospace;letter-spacing:.09em;color:#a12a59}
+.studio-intro-art{position:relative;min-height:315px;display:grid;place-items:center}
+.studio-art-back{position:absolute;right:15%;top:10%;width:62%;height:75%;background:#f4e994;color:#a42b5d;padding:20px;transform:rotate(10deg);font:12px 'DM Mono',monospace;letter-spacing:.1em}
+.studio-art-front{position:relative;width:min(270px,80%);min-height:280px;padding:20px;background:#d92565;color:#fff;display:flex;flex-direction:column;justify-content:space-between;transform:rotate(-5deg);box-shadow:8px 9px 0 #521f3b}
+.studio-art-front small,.studio-art-front span{font:9px 'DM Mono',monospace;letter-spacing:.08em}.studio-art-front strong{font:400 52px/.82 'Archivo Black',sans-serif;letter-spacing:-.07em}.studio-art-front em{font:italic 700 1em 'Playfair Display',serif;color:#ffd5e3}
+.studio-art-tag{position:absolute;right:1%;bottom:12%;padding:14px;background:#fff9ee;border:1px solid #673047;transform:rotate(8deg);font:10px 'DM Mono',monospace;color:#a92258}
+@media(max-width:760px){.playground-page .challenge-grid{grid-template-columns:1fr}.playground-page .challenge-card:first-child{grid-column:auto;grid-template-columns:1fr}.playground-page .challenge-card:first-child .challenge-art{min-height:210px}.playground-page .challenge-card:first-child .card-content{padding:21px}.studio-intro{grid-template-columns:1fr;padding:28px 22px}.studio-intro h1{font-size:clamp(48px,11vw,74px)}.studio-intro-art{min-height:250px}.studio-art-front{min-height:225px;max-width:220px}.studio-art-front strong{font-size:42px}.edit-page .page-intro{padding:30px 0}}
